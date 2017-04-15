@@ -5,9 +5,8 @@ public class Solution {
         }
         int num = Math.abs(x);  
         int res = 0;  
-        while(num != 0)  
-        {  
-            if(res > (Integer.MAX_VALUE - num % 10) / 10) { 
+        while(num != 0){  
+            if (res > (Integer.MAX_VALUE - num % 10) / 10) { 
                 return 0;  
             }
             res = res * 10 + num % 10;  
