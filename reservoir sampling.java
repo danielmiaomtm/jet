@@ -1,3 +1,10 @@
+n / k
+http://www.geeksforgeeks.org/reservoir-sampling/
+shuffle
+http://www.geeksforgeeks.org/shuffle-a-given-array/
+
+
+
 2.在序列流中取一个数，如何确保随机性，即取出某个数据的概率为:1/(已读取数据个数)
 
 　　假设已经读取n个数，现在保留的数是Ax，取到Ax的概率为(1/n)。
