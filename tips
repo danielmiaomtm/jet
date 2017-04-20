@@ -4,8 +4,12 @@ functional programming的优点？
 scala和java
 mongodb/documentdb
 sql和nosql优缺点
+
+
 microserverce
- 
+1 easy to sacle
+2 independent releasability
+3 more even distributed complexity
 
 就是  F＃ ＋ microservice ＋ event store , 数据库原来是 sql现在在migrate到nosql（documentdb）
 
