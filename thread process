@@ -1,0 +1,17 @@
+What is Thread in Java : 
+
+1) Both process and Thread are independent path of execution but one process can have multiple Threads.
+
+2) Every process has its own memory space, executable code and a unique process identifier (PID) while every thread has its own stack 
+in Java but it uses process main memory and share it with other threads. 
+
+3) Threads are also refereed as task or light weight process (LWP) in operating system 
+
+4) Threads from same process can communicate with each other by using Programming language construct like wait and notify in Java and 
+much simpler than inter process communication. 
+
+5) Another difference between Process and Thread in Java is that it's How Thread and process are created. It's easy to create Thread as 
+compared to Process which requires duplication of parent process. 
+
+6) All Threads which is part of same process share system resource like file descriptors , Heap Memory and other resource but each Thread
+has its own Exception handler and own stack in Java. 
