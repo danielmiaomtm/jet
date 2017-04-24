@@ -24,3 +24,7 @@ public class Java8MapExample {
                 .map(String::toUpperCase) // Convert each element to upper case
                 .collect(toList()); // Collect results into a new list
     }
+
+
+
+
