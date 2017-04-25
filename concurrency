@@ -1,0 +1,27 @@
+What about concurrency?
+The approach described above can unify the way your services apply changes to the SKU and remove boilerplate code needed to handle input
+and output. What it doesn’t give you is protection against a situation where multiple processes/threads/handlers try to update the same 
+SKU at the same time:
+
+Thread 1 starts processing command A for SKU 1
+Thread 2 starts processing command B for SKU 1
+Thread 1 loads SKU aggregate from Log store
+Thread 2 loads SKU aggregate from Log Store
+Based on SKU aggregate, Thread 1 decodes to append event E1
+Based on SKU aggregate, Thread 2 decodes to append event E2
+=> Both events are appended to the SKU’s stream.
+
+Such behavior could lead to data loss or data corruption. An example would be a service that checks if a SKU has a coupon applied to it,
+and if it does not, the service applies the coupon by appending a special event to the stream. Without any protection in place we could 
+apply the same coupon twice and probably lose money as a result.
+
+Typical approaches to handle this issue include:
+
+Locking-based mechanisms
+Pessimistic: Before loading the SKU aggregate, every thread will have to acquire a lock, and it is released after the operation is 
+completed.
+
+Optimistic: Operate under the assumption that you can update a SKU, but before updating there is a check to see if it was modified by 
+someone else since the time you loaded it. If it was modified, the update fails.
+Software transactional memory (STM): In-memory mechanisms are inspired by database transactions where a process logs all read and write 
+operations, and if it detects any conflicts, it re-executes them.
