@@ -1,0 +1,17 @@
+1 synchronization
+The simplest option is to have each microservice expose some form of an endpoint that the other can connect to and communicate directly.
+This may be a viable approach for having synchronous communication between services. As long as the services are connected to each other 
+on the network, this approach can work. For the synchronous communication to be reliable, both the microservices (sender and receiver) 
+should be running. Service-to-service communication begins to get tricky when one microservice need to send the same message to multiple 
+other microservices.
+
+
+2 asynchronization
+Kafka
+
+Asynchronous communication between microservices may be accomplished using message-passing. In most cases, some form of message broker is
+involved, which both the microservices talks to. The broker may provide additional features such as reliability, delivery guarantees, 
+security, etc. This model can also help in PUB/SUB kind of scenario where multiple microservices may be interested in the same message. 
+The broker can take care of routing the message to appropriate consumers. Azure Service Bus is one such message broker which supports both 
+traditional message queues as well publish-subscribe topics. Kafka is another popular messaging platform.
+
